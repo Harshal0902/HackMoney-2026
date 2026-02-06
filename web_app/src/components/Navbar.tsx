@@ -63,7 +63,7 @@ export const Navbar = () => {
 
                     <div className="hidden md:flex items-center gap-3">
                         <Button size="sm" asChild>
-                            <Link href="/session">Connect Wallet</Link>
+                            Connect Wallet
                         </Button>
                         <Button variant="outline" size="sm" asChild>
                             <Link href="/arena">Start Trading</Link>

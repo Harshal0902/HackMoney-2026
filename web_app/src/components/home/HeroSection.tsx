@@ -6,25 +6,24 @@ import Link from "next/link";
 export const HeroSection = () => {
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
-            {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/3 rounded-full blur-3xl" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-150 bg-primary/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 right-0 w-100 h-100 bg-primary/3 rounded-full blur-3xl" />
             </div>
 
-            {/* Grid Pattern */}
             <div
-                className="absolute inset-0 opacity-[0.02]"
+                className="absolute inset-0 opacity-[0.02] text-foreground"
                 style={{
-                    backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), 
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-                    backgroundSize: '60px 60px'
+                    backgroundImage: `
+      linear-gradient(currentColor 1px, transparent 1px),
+      linear-gradient(90deg, currentColor 1px, transparent 1px)
+    `,
+                    backgroundSize: '60px 60px',
                 }}
             />
 
             <div className="container relative z-10 px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    {/* Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -35,7 +34,6 @@ export const HeroSection = () => {
                         <span className="text-sm font-medium text-primary">Powered by Yellow State Channels</span>
                     </motion.div>
 
-                    {/* Headline */}
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -47,7 +45,6 @@ export const HeroSection = () => {
                         <span className="text-gradient">Settle once.</span>
                     </motion.h1>
 
-                    {/* Subtext */}
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +55,6 @@ export const HeroSection = () => {
                         Zero latency. Zero complexity.
                     </motion.p>
 
-                    {/* CTAs */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -78,7 +74,6 @@ export const HeroSection = () => {
                         </Button>
                     </motion.div>
 
-                    {/* Live Stats Preview */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}

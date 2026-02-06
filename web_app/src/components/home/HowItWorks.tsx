@@ -51,9 +51,8 @@ export const HowItWorks = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="glass-card p-6 relative group hover:border-primary/30 transition-colors"
                         >
-                            {/* Connector Line */}
                             {index < steps.length - 1 && (
-                                <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-border" />
+                                <div className="hidden md:block absolute top-1/2 -right-6.5 w-6 h-px bg-border" />
                             )}
 
                             <div className="flex items-start gap-4">

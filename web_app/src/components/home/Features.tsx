@@ -37,7 +37,7 @@ const features = [
 export const Features = () => {
     return (
         <section className="py-24 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-b from-transparent via-primary/2 to-transparent" />
 
             <div className="container px-4 relative">
                 <motion.div
