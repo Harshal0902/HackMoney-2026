@@ -130,7 +130,7 @@ export default function AgentPage() {
 
   if (!session) {
     return (
-      <div className='min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center'>
+      <div className='min-h-screen flex items-center justify-center'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export default function AgentPage() {
   }
 
   return (
-    <div className='min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900'>
+    <div className='min-h-screen'>
       <main className='py-8 px-4'>
         <div className='max-w-6xl mx-auto'>
           <motion.div

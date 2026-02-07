@@ -340,7 +340,7 @@ export default function ArenaPage() {
 
   if (!isConnected || !address) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -360,7 +360,7 @@ export default function ArenaPage() {
 
   if (!store.session) {
     return (
-      <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen  flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -412,7 +412,7 @@ export default function ArenaPage() {
     priceCache[selectedMarket.symbol]?.change24h || 0;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen">
       <main className="py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
