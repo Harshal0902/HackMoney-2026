@@ -16,9 +16,10 @@ type NavLink = {
 };
 
 const navLinks: NavLink[] = [
+    { name: "Session", path: "/session" },
     { name: "Arena", path: "/arena" },
     { name: "AI Agent", path: "/agent" },
-    { name: "Session", path: "/session" },
+    { name: "Settle", path: "/settle" },
 ];
 
 export const Navbar = () => {
@@ -37,7 +38,7 @@ export const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="z-50 px-4 py-4"
         >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-340 mx-auto">
                 <div className="glass-panel px-6 py-3 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2 group">
                         <span className="text-xl font-bold text-foreground">
@@ -45,7 +46,7 @@ export const Navbar = () => {
                         </span>
                     </Link>
 
-                    <div className="hidden md:flex items-center gap-1">
+                    <div className="hidden md:flex items-center gap-1 pl-56">
                         {navLinks.map((link) => {
                             const isActive = pathname === link.path;
 
