@@ -28,7 +28,7 @@ import {
 } from "@/lib/priceOracle";
 import { yellowClient } from "@/lib/yellow";
 import { uniswapClient } from "@/lib/uniswap";
-import { TradingAgent } from "@/lib/agent";
+import { TradingAgent, AgentLog } from "@/lib/agent";
 import {
   prepareSettlement,
   submitSettlement,
@@ -276,18 +276,30 @@ export default function ArenaPage() {
     if (!store.session) return;
 
     if (!store.session.agentEnabled && !agent) {
-      const newAgent = new TradingAgent(store.session);
-      newAgent.startAutoTrading(5000);
+      const newAgent = new TradingAgent(
+        {
+          strategy: "trend_follow",
+          maxTrades: 10,
+          maxDrawdown: 5,
+          sessionId: store.session.id,
+          userAddress: address!,
+        },
+        store.session
+      );
+
+      newAgent.setCallbacks(undefined, undefined);
+
+      newAgent.start();
       setAgent(newAgent);
       store.setAgentEnabled(true);
       console.log("🤖 AI Agent activated");
     } else if (agent) {
-      agent.stopAutoTrading();
+      agent.stop();
       setAgent(null);
       store.setAgentEnabled(false);
       console.log("🤖 AI Agent stopped");
     }
-  }, [store.session, agent, store]);
+  }, [store.session, agent, store, address]);
 
   const handleSessionEnd = async () => {
     if (!store.session || !signer || store.session.settlementPending)
@@ -298,7 +310,7 @@ export default function ArenaPage() {
       store.setSettlementPending(true);
 
       if (agent) {
-        agent.stopAutoTrading();
+        agent.stop();
       }
 
       const settlement = await prepareSettlement(
