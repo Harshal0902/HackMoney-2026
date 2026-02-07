@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Wallet } from "lucide-react";
 import { useState } from "react";
+import { useAccount } from "wagmi";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 type NavLink = {
     name: string;
@@ -20,7 +23,12 @@ const navLinks: NavLink[] = [
 
 export const Navbar = () => {
     const pathname = usePathname();
+    const { isConnected, address } = useAccount();
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+
+    const formatAddress = (addr: string) => {
+        return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+    };
 
     return (
         <motion.nav
@@ -62,12 +70,24 @@ export const Navbar = () => {
                     </div>
 
                     <div className="hidden md:flex items-center gap-3">
-                        <Button size="sm" asChild>
-                            Connect Wallet
-                        </Button>
-                        <Button variant="outline" size="sm" asChild>
-                            <Link href="/arena">Start Trading</Link>
-                        </Button>
+                        {isConnected ? (
+                            <>
+                                {/* <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-700/50 border border-slate-600">
+                                    <Wallet className="w-4 h-4 text-blue-400" />
+                                    <span className="text-sm text-slate-200">
+                                        {formatAddress(address || "")}
+                                    </span>
+                                </div> */}
+                                <ConnectButton />
+                            </>
+                        ) : (
+                            <>
+                                <ConnectButton />
+                                <Button variant="outline" size="sm" asChild>
+                                    <Link href="/arena">Start Trading</Link>
+                                </Button>
+                            </>
+                        )}
                     </div>
 
                     <button
@@ -105,6 +125,19 @@ export const Navbar = () => {
                         })}
 
                         <div className="border-t border-border my-2" />
+
+                        {/* {isConnected && (
+                            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-700/50 border border-slate-600 mb-2">
+                                <Wallet className="w-4 h-4 text-blue-400" />
+                                <span className="text-sm text-slate-200">
+                                    {formatAddress(address || "")}
+                                </span>
+                            </div>
+                        )} */}
+
+                        <div className="w-full">
+                            <ConnectButton />
+                        </div>
 
                         <Button variant="outline" className="w-full" asChild>
                             <Link href="/arena" onClick={() => setMobileOpen(false)}>
